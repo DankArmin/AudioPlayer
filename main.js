@@ -3,6 +3,7 @@ import { app, BrowserWindow, ipcMain, dialog } from 'electron/main'
 import { join, dirname, extname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import fs from "fs/promises";
+import path from 'node:path';
 
 import Store from 'electron-store'
 
@@ -20,10 +21,10 @@ const createWindow = () => {
     webPreferences: {
       preload: join(__dirname, 'preload.js'),
       contextIsolation: true,
-      nodeIntegration: false
+      nodeIntegration: false,
+      icon: path.join(__dirname, 'assets', process.platform === 'darwin' ? 'icon.icns' : 'icon.png')
     }
   })
-  win.webContents.openDevTools()
   win.loadFile('index.html')
 }
 
