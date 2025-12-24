@@ -11,7 +11,8 @@ export const makers = [
     config: {
         name: 'Dankophone',
         iconUrl: './assets/icon.png',
-        setupIcon: './assets/icon.ico'
+        setupIcon: './assets/icon.ico',
+        description: 'A lightweight desktop audio player built with Electron',
     },
   },
   {

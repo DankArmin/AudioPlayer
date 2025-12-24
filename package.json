@@ -2,7 +2,7 @@
   "name": "audioplayer",
   "productName": "Dankophone",
   "version": "1.0.0",
-  "description": "",
+  "description": "A lightweight desktop audio player built with Electron",
   "license": "ISC",
   "author": "Dank",
   "type": "module",
