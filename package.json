@@ -5,6 +5,11 @@
   "description": "A lightweight desktop audio player built with Electron",
   "license": "ISC",
   "author": "Dank",
+  "homepage": "https://github.com/DankArmin/AudioPlayer",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DankArmin/AudioPlayer.git"
+  },
   "type": "module",
   "main": "./main.js",
   "scripts": {
