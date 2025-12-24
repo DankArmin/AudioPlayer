@@ -9,7 +9,7 @@ export const makers = [
   {
     name: '@electron-forge/maker-squirrel',
     config: {
-        name: 'Dankophone',
+        name: 'dankophone',
         iconUrl: './assets/icon.png',
         setupIcon: './assets/icon.ico',
         description: 'A lightweight desktop audio player built with Electron',
