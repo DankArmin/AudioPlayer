@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <title>Dankophone</title>
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/screen.css" />
+    <script src="./assets/js/library.js"></script>
+    <script src="./assets/js/settings.js"></script>
+    <script src="./assets/js/menu.js"></script>
+    <script src="./assets/js/audio.js"></script>
+  </head>
+  <body>
+    <audio id="audio-player" src=""></audio>
+    <header>
+      <nav>
+        <ul>
+          <li id="menu-library"><a href="#" >LIBRARY</a></li>
+          <li id="menu-home" class="current-menu"><a href="#" >HOME</a></li>
+          <li id="menu-settings"><a href="#" >SETTINGS</a></li>
+      </nav>
+    </header>
+    <main>
+      <div id="home" class="menu hidden">
+      <div id="now-playing-information">
+        <div id="now-playing-image">
+          <img src="./assets/images/disc.png" alt="disc image" id="now-playing-disc"/>
+        </div>
+        <div id="now-playing-text">
+          <h2 id="now-playing-title">No track playing</h2>
+          <h3 id="now-playing-artist"></h3>
+      </div>
+      </div>
+      <div id="controls">
+        <p id="time-elapsed">0:00/0:00</p>
+        <input type="range" id="progress-bar" value="0" max="100" min="0" step="any"/>
+        <div id="control-buttons">
+          <button id="skip-back">-10</button>
+          <button id="play-pause-button">Play</button>
+          <button id="skip-forward">+10</button>
+        </div>
+        <div id="volume-slider-holder">
+          <input type="range" id="volume-slider" value="100" max="100" min="0" step="any"/>
+        </div>
+      </div>
+      </div>
+      <div id="library" class="menu">
+        <ul id="track-list">
+          <!-- Tracks will be dynamically inserted here -->
+        </ul>
+      </div>
+      <div id="settings" class="menu hidden">
+        <div>
+          <button id="audio-folder">Select Audio Folder</button>
+          <p id="audio-folder-path"> No path selected</p>
+        </div>
+        <button id="clear-preferences">Clear Preferences</button>
+      </div>
+    </main>
+    <footer>  
+      Copyright © 2025 Dank
+    </footer>
+  </body>
+  <script src="./renderer.js"></script>
+</html>
