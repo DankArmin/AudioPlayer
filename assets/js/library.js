@@ -33,7 +33,35 @@ async function initLibrary() {
     }
     
     initTracks(trackList);
+    initLibraryControls();
     await resumeLastTrack();
+}
+
+function initLibraryControls() {
+    const searchBar = document.getElementById("search-bar");
+    const refreshButton = document.getElementById("refresh-button");
+
+    if (searchBar) {
+        searchBar.addEventListener("input", () => {
+            const filter = searchBar.value.toLowerCase();
+            const trackItems = document.querySelectorAll("#track-list .track-item");
+            trackItems.forEach((item) => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(filter)) {
+                    item.style.display = "";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+        });
+    }
+
+    if (refreshButton) {
+        refreshButton.addEventListener("click", async () => {
+            await initLibrary();
+            showSection("library");
+        });
+    }
 }
 
 function initTracks(trackList) {
@@ -60,6 +88,8 @@ function initTracks(trackList) {
                         }
                     } catch {}
                 }
+                pausePlayButton.textContent = "Pause";
+                nowPlayingDisc.classList.add("playing");
             }
             
             if (typeof playAudio === 'function') {

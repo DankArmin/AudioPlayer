@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function handleKeybinds(){
     document.addEventListener("keydown", (e) => {
-        if(e.code === "Space"){
+        if(e.code === "Space" && document.getElementById("menu-home").classList.contains("current-menu")){
             e.preventDefault();
             togglePlayPause();
         } else if (e.code === "ArrowLeft") {

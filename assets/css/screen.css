@@ -222,10 +222,15 @@ main{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    animation: spin 4s linear infinite;
 }
 
 #now-playing-disc.playing{
-    animation: spin 4s linear infinite;
+    animation-play-state: running;
+}
+
+#now-playing-disc:not(.playing){
+    animation-play-state: paused;
 }
 
 @keyframes spin {
@@ -253,11 +258,15 @@ main{
 /*LIBRARY*/
 #track-list{
     list-style-type: none;
-    padding: 0;
-    margin: 0;
+    padding: 2em 0;
+    margin-bottom: 5em;
     width: 90%;
     justify-self: center;
     justify-items: center;
+    overflow-y: scroll;
+    max-height: 55vh;
+    mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
 }
 
 .track-item{
@@ -286,6 +295,58 @@ main{
     text-align: center;
     font-size: 1.5em;
     color: var(--purple) !important;
+}
+
+#library-controls{
+    display: flex;
+    justify-content: center;
+    margin: 1em 0;
+}
+
+#search-bar{
+    width: 50%;
+    padding: 0.5em;
+    border-radius: 1em;
+    border: 2px solid var(--lavender);
+    box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.1);
+    font-size: 1em;
+    outline: none;
+    background-color: var(--beige);
+    color: var(--violet);
+}
+
+#search-bar::placeholder{
+    color: var(--lavender)
+}
+
+#search-bar:focus{
+    border-color: var(--purple);
+    box-shadow: 0 0 1em rgba(114, 90, 193, 0.5);
+    color: var(--purple);
+}
+
+#search-bar:hover{
+    border-color: var(--purple);
+    color: lavender;
+    color: var(--purple);
+}
+
+#refresh-button{
+    background: #725AC1;
+    background: linear-gradient(90deg, rgba(114, 90, 193, 1) 0%, rgba(141, 134, 201, 1) 100%);
+    padding: 0.75em;
+    border-radius: 1em;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.15);
+    color: var(--beige);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 1em;
+}
+
+#refresh-button:hover{
+    outline: white 2px solid;
+    transform: scale(1.1);
 }
 
 /*SETTINGS*/
@@ -328,6 +389,6 @@ main{
 /*FOOTER*/
 footer{
     bottom: 1em;
-    position: absolute;
+    position: fixed;
     justify-self: center;
 }

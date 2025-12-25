@@ -3,6 +3,7 @@ import { FuseV1Options, FuseVersion } from '@electron/fuses';
 
 export const packagerConfig = {
   asar: true,
+  icon: './assets/icon',
 };
 export const rebuildConfig = {};
 export const publishers = [
@@ -23,7 +24,6 @@ export const makers = [
     name: '@electron-forge/maker-squirrel',
     config: {
         name: 'dankophone',
-        setupIcon: './assets/icon.ico',
         description: 'A lightweight desktop audio player built with Electron',
     },
   },
@@ -31,8 +31,7 @@ export const makers = [
       name: '@electron-forge/maker-dmg',
       platforms: ['darwin'],
       config: {
-        name: 'Dankophone',             
-        icon: './assets/icon.icns'     
+        name: 'Dankophone',                
       }
     },
   {

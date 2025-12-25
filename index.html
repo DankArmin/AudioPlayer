@@ -29,7 +29,7 @@
       </nav>
     </header>
     <main>
-      <div id="home" class="menu hidden">
+      <div id="home" class="menu">
       <div id="now-playing-information">
         <div id="now-playing-image">
           <img src="./assets/images/disc.png" alt="disc image" id="now-playing-disc"/>
@@ -52,7 +52,11 @@
         </div>
       </div>
       </div>
-      <div id="library" class="menu">
+      <div id="library" class="menu hidden">
+        <div id="library-controls">
+          <input type="text" id="search-bar" placeholder="Search..."/>
+          <button id="refresh-button">Refresh</button>
+        </div>
         <ul id="track-list">
           <!-- Tracks will be dynamically inserted here -->
         </ul>
