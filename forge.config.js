@@ -13,7 +13,8 @@ export const publishers = [
         owner: 'DankArmin',
         name: 'AudioPlayer'
       },
-      prerelease: false
+      prerelease: false,
+      draft: true
     }
   }
 ];

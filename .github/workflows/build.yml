@@ -3,33 +3,46 @@ name: Build and Release
 on:
   push:
     tags:
-      - 'v*.*.*'  # Runs only on version tags
+      - 'v*.*.*'   # Trigger on version tags
 
 jobs:
   build:
     runs-on: windows-latest
 
     permissions:
-      contents: write  # Required to create releases
+      contents: write  # Required for publishing releases
 
     steps:
+      # 1. Checkout the repository
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      # 2. Setup Node.js
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 25
 
+      # 3. Install dependencies
       - name: Install dependencies
         run: npm ci
 
+      # 4. Build the app (make)
       - name: Build the app
         run: npm run make
 
-      - name: List build output (debug)
+      # 5. Optional debug: list output files
+      - name: List build output
         run: dir out\make\squirrel.windows\x64
 
+      # 6. Upload artifacts so you can download them
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: Dankophone-Windows
+          path: out/make/squirrel.windows/x64/**
+
+      # 7. Publish release using Forge
       - name: Publish release
         run: npm run publish
         env:
