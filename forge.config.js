@@ -5,6 +5,18 @@ export const packagerConfig = {
   asar: true,
 };
 export const rebuildConfig = {};
+export const publishers = [
+  {
+    name: '@electron-forge/publisher-github',
+    config: {
+      repository: {
+        owner: 'DankArmin',
+        name: 'AudioPlayer'
+      },
+      prerelease: false
+    }
+  }
+];
 export const makers = [
   {
     name: '@electron-forge/maker-squirrel',

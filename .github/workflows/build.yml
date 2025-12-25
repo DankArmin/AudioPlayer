@@ -1,16 +1,30 @@
-name: Build Electron App
+name: Build and Release
 
 on:
   push:
-    branches: [ main ]
+    tags:
+      - 'v*.*.*'   # Only runs on version tags
 
 jobs:
-  build-windows:
+  build:
     runs-on: windows-latest
+
+    permissions:
+      contents: write
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: 25
-      - run: npm install
-      - run: npm run make
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Make & publish
+        run: npm run publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
