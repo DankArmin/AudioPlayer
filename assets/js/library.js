@@ -82,13 +82,22 @@ function initTracks(trackList) {
                 if (window.store && window.store.get) {
                     try {
                         const positions = await window.store.get('trackPositions') || {};
-                        const savedTime = positions[trackPath];
+                        let savedTime = positions[trackPath];
                         if (typeof savedTime === 'number' && isFinite(savedTime)) {
-                            audioPlayer.currentTime = savedTime;
+                            // Wait for metadata to load to check duration
+                            audioPlayer.addEventListener('loadedmetadata', function checkAndRestore() {
+                                const duration = audioPlayer.duration;
+                                // If saved time is within 2 seconds of the end, reset to beginning
+                                if (duration - savedTime < 2) {
+                                    savedTime = 0;
+                                }
+                                audioPlayer.currentTime = savedTime;
+                                audioPlayer.removeEventListener('loadedmetadata', checkAndRestore);
+                            }, { once: true });
                         }
                     } catch {}
                 }
-                pausePlayButton.textContent = "Pause";
+                pausePlayButton.innerHTML = `<img src="./assets/images/pause.svg" alt="play/pause">`;
                 nowPlayingDisc.classList.add("playing");
             }
             

@@ -4,11 +4,7 @@
     <meta charset="UTF-8" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
-    />
-    <meta
-      http-equiv="X-Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:;"
     />
     <title>Dankophone</title>
     <link rel="stylesheet" href="./assets/css/reset.css" />
@@ -44,7 +40,7 @@
         <input type="range" id="progress-bar" value="0" max="100" min="0" step="any"/>
         <div id="control-buttons">
           <button id="skip-back">-10</button>
-          <button id="play-pause-button">Play</button>
+          <button id="play-pause-button"><img src="./assets/images/play.svg" alt="play/pause"></button>
           <button id="skip-forward">+10</button>
         </div>
         <div id="volume-slider-holder">
